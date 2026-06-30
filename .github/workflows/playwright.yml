@@ -24,6 +24,8 @@ jobs:
       run: npx playwright test
       env:
         WORKERS: 1
+        UI_HOME_BASE_URL: ${{ github.secrets.UI_HOME_BASE_URL }}
+        LOGIN_BASE_URL: ${{ github.secrets.LOGIN_BASE_URL }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
