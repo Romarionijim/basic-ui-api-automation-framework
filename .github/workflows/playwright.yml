@@ -6,6 +6,9 @@ on:
     branches: main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     name: Run Playwright UI Tests
@@ -28,9 +31,17 @@ jobs:
         WORKERS: 1
         UI_HOME_BASE_URL: ${{ secrets.UI_HOME_BASE_URL }}
         LOGIN_BASE_URL: ${{ secrets.LOGIN_BASE_URL }}
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/
-        retention-days: 30
+        retention-days: 3
+
+    - name: Deploy Playwright report to Github Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./playwright-report
