@@ -1,6 +1,6 @@
 import { test as setup, expect } from '@playwright/test';
 import path from 'path';
-import { SauceDemoCredentials } from '../../consts/sauce-credentials.consts';
+import { SauceDemoCredentials } from '../../ui/consts/sauce-credentials.consts';
 
 const authFile = path.join(__dirname, '../../playwright/.auth/user.json');
 

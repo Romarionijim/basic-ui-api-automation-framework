@@ -1,4 +1,4 @@
-import { SauceDemoCredentials } from "../../consts/sauce-credentials.consts";
+import { SauceDemoCredentials } from "../consts/sauce-credentials.consts";
 import { BasePage } from "./base.page";
 
 export class LoginPage extends BasePage {
