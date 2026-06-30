@@ -2,7 +2,7 @@ import { Page, Locator, expect } from "@playwright/test";
 import { WaitForVisibilityOptions } from "../../consts/visibility-options.consts";
 
 export class BasePage {
-    constructor(public page: Page) {
+    constructor(protected page: Page) {
         this.page = page;
     }
 
