@@ -18,14 +18,16 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests
       run: npx playwright test
       env:
         WORKERS: 1
-        UI_HOME_BASE_URL: ${{ github.secrets.UI_HOME_BASE_URL }}
-        LOGIN_BASE_URL: ${{ github.secrets.LOGIN_BASE_URL }}
+        UI_HOME_BASE_URL: ${{ secrets.UI_HOME_BASE_URL }}
+        LOGIN_BASE_URL: ${{ secrets.LOGIN_BASE_URL }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
