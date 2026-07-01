@@ -62,6 +62,9 @@ runs:
     - name: Run UI tests
       shell: bash
       run: npx playwright test --project=ui --workers=${{ inputs.workers }}
+      env:
+        UI_HOME_BASE_URL: ${{ inputs.ui_home_base_url }}
+        LOGIN_BASE_URL: ${{ inputs.login_base_url }}
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
