@@ -1,9 +1,10 @@
 import { expect } from '@playwright/test';
 import { test } from '../../../api/fixtures/api.fixture';
 import { PostType } from '../../../api/types/post-options.types';
+import { TestTags } from '../../../api/tags/test-tags';
 
 test.describe('Post CRUD tests', async () => {
-    test('should get list of posts - [GET] /posts', async ({ posts }) => {
+    test('should get list of posts - [GET] /posts', { tag: [TestTags.POSTS] }, async ({ posts }) => {
         await test.step('should get all posts', async () => {
             const response = await posts.getPost({ allPosts: true });
             const responseBody: PostType[] = await response?.json();
