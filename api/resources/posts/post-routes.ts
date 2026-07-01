@@ -1,6 +1,6 @@
 import { APIRequestContext, APIResponse } from "@playwright/test";
 import { ApiClient } from "../../client/api-client";
-import { PostResourceOptions, PostType } from "../../types/post-options.types";
+import { PostResourceOptions, Post } from "../../types/post-options.types";
 
 export class Posts {
     apiClient: ApiClient;
@@ -24,9 +24,19 @@ export class Posts {
         }
     }
 
-    async createPost<T>(post: PostType) {
+    async createPost<T>(post: Post) {
         return await this.apiClient.post('/posts', {
             data: post
         })
+    }
+
+    async patchPost<T>(id: number, post: Partial<Post>) {
+        return await this.apiClient.patch(`/posts/${id}`, {
+            data: post
+        })
+    }
+
+    async deletePost(id: number) {
+        return await this.apiClient.delete(`/posts/${id}`);
     }
 }
