@@ -13,17 +13,25 @@ test.describe('Post CRUD tests', async () => {
             expect(responseBody[0].userId).toBe(1);
         })
 
-        // await test.step('should get single post by ID', async () => {
+        await test.step('should get single post by ID', async () => {
+            const response = await posts.getPost({ id: 1 })
+            const responseBody: PostType = await response?.json()
+            expect(responseBody.id).toBe(1)
+            expect(responseBody.userId).toBe(1);
+        })
+    })
 
-        // })
+    test('Should create post successfully - [POST] /posts', { tag: [TestTags.POSTS] }, async ({ posts }) => {
 
-        // await test.step('should get comments from specific post by ID', async () => {
-
-        // })
-
-        // await test.step('should get comments from specific post by post ID query param', async () => {
-
-        // })
-
+        await test.step('should create post with correct payload', async () => {
+            const payload = {
+                title: 'test title',
+                body: 'test body',
+                userId: 550,
+                id: 550055
+            }
+            const response = await posts.createPost(payload);
+            expect(response.status()).toBe(201)
+        })
     })
 })
