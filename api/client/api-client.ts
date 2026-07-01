@@ -39,10 +39,9 @@ export class ApiClient {
         }
 
         return this.request[method](`${endpoint}`, {
-            data,
-            params,
             headers,
+            data,
+            params
         })
     }
-
 }
