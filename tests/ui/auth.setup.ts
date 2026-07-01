@@ -7,7 +7,7 @@ const authFile = path.join(__dirname, '../../playwright/.auth/user.json');
 
 setup('Authenticate', async ({ page, loginPage, homePage }) => {
     await loginPage.navigateTo('/');
-    await loginPage.loginToSauceDemo(SauceDemoCredentials.STANDARD_USERNAME, SauceDemoCredentials.STANDARD_PASSWORD);
+    await loginPage.loginToSauceDemo();
     const currentPage = await homePage.getCurrentPage();
     await expect(currentPage).toHaveURL(/inventory.html/);
     await page.context().storageState({ path: authFile });
