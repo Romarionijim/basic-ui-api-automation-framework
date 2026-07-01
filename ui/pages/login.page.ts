@@ -10,7 +10,6 @@ export class LoginPage extends BasePage {
         userName: string = SauceDemoCredentials.STANDARD_USERNAME,
         password: string = SauceDemoCredentials.STANDARD_PASSWORD,
     ) {
-        await this.navigateTo();
         await this.userNameField.fill(userName);
         await this.passwordField.fill(password);
         await this.loginButton.click();
