@@ -39,9 +39,10 @@ runs:
       
     - name: Run API Playwright tests
       shell: bash
-      run: npx playwright test --project=api
+      run: npx playwright test --project=api --workers=${{ inputs.workers }}
       env:
         API_BASE_URL: ${{ inputs.api_base_url }}
+        WORKERS: ${{ inputs.workers }}
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
@@ -49,4 +50,3 @@ runs:
         name: playwright-report
         path: playwright-report/
         retention-days: 3
-  

@@ -65,6 +65,7 @@ runs:
       env:
         UI_HOME_BASE_URL: ${{ inputs.ui_home_base_url }}
         LOGIN_BASE_URL: ${{ inputs.login_base_url }}
+        WORKERS: ${{ inputs.workers }}
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
@@ -72,4 +73,3 @@ runs:
         name: playwright-report
         path: playwright-report/
         retention-days: 3
-      
