@@ -35,6 +35,7 @@ runs:
     - name: Install dependencies
       shell: bash
       run: npm ci
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
       
     - name: Run API Playwright tests
       shell: bash

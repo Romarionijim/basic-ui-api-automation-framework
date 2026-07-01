@@ -35,6 +35,11 @@ runs:
         path: |
           node_modules
         key: e2e-node-modules-${{ hashFiles('package-lock.json') }}
+
+     name: 📦 Install dependencies
+      shell: bash
+      run: npm ci
+      if: steps.node-modules-cache.outputs.cache-hit != 'true'
     
     - name: Get installed Playwright version
       id: playwright-version
