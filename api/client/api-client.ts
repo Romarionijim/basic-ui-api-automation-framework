@@ -7,27 +7,27 @@ export class ApiClient {
         this.request = request;
     }
 
-    async get(endpoint: string, options?: ApiRequestOptions) {
+    async get<T>(endpoint: string, options: ApiRequestOptions<T> = {}) {
         return this.makeHttpRequest(APIRequestMethods.GET, endpoint, options);
     }
 
-    async post(endpoint: string, options?: ApiRequestOptions) {
+    async post<T>(endpoint: string, options: ApiRequestOptions<T> = {}) {
         return this.makeHttpRequest(APIRequestMethods.POST, endpoint, options);
     }
 
-    async put(endpoint: string, options?: ApiRequestOptions) {
+    async put<T>(endpoint: string, options: ApiRequestOptions<T> = {}) {
         return this.makeHttpRequest(APIRequestMethods.PUT, endpoint, options);
     }
 
-    async patch(endpoint: string, options?: ApiRequestOptions) {
+    async patch<T>(endpoint: string, options: ApiRequestOptions<T> = {}) {
         return this.makeHttpRequest(APIRequestMethods.PATCH, endpoint, options);
     }
 
-    async delete(endpoint: string, options?: ApiRequestOptions) {
+    async delete<T>(endpoint: string, options: ApiRequestOptions<T> = {}) {
         return this.makeHttpRequest(APIRequestMethods.DELETE, endpoint, options);
     }
 
-    private async makeHttpRequest(method: APIRequestMethods, endpoint: string, options: ApiRequestOptions = {}) {
+    private async makeHttpRequest<T>(method: APIRequestMethods, endpoint: string, options: ApiRequestOptions<T> = {}) {
         const { data, params, authRequired } = options;
 
         const headers: Record<string, string> = {
