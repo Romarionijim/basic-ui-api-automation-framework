@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ui": "npx playwright test --project=ui",
+    "ui": "export HEADLESS=false && export WORKERS=1 && npx playwright test --project=ui",
+    "ui:dev": "npx playwright test --project=ui",
     "api": "npx playwright test --project=api",
     "build": "npx tsc --noEmit"
   },

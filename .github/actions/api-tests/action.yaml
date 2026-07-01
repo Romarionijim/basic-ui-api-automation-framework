@@ -39,7 +39,7 @@ runs:
       
     - name: Run API Playwright tests
       shell: bash
-      run: npx playwright test --project=api --workers=${{ inputs.workers }}
+      run: npm run api
       env:
         API_BASE_URL: ${{ inputs.api_base_url }}
         WORKERS: ${{ inputs.workers }}

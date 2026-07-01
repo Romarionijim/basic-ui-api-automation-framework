@@ -42,14 +42,14 @@ export default defineConfig({
         testIdAttribute: 'data-test'
       },
       dependencies: ['setup'],
-      workers: process.env.WORKERS ? 2 : 1,
+      workers: Number(process.env.WORKERS) ?? 1,
       testDir: './tests/ui',
     },
 
     {
       name: 'api',
       use: { baseURL: process.env.API_BASE_URL },
-      workers: process.env.CI ? 2 : 1,
+      workers: Number(process.env.WORKERS) ?? 1,
       testDir: './tests/api',
     },
   ],
