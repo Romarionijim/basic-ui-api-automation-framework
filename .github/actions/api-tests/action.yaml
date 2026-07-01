@@ -1,0 +1,51 @@
+name: Run API tests 
+description: Action to run api tests 
+
+inputs: 
+  api_base_url: 
+    description: base url for api tests
+    required: true
+  
+  workers:
+    description: number of workers to run
+    required: 1
+    default: 1
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Cache node modules
+      uses: actions/cache@v4
+      id: node-modules-cache
+      with:
+        path: |
+          node_modules
+        key: api-node-modules-${{ hashFiles('package-lock.json') }}
+    
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+      
+    - name: Run API Playwright tests
+      shell: bash
+      run: npx playwright test --project=api
+      env:
+        API_BASE_URL: ${{ inputs.api_base_url }}
+
+    - uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 3
+  
