@@ -30,6 +30,7 @@ test.describe('Post CRUD tests', async () => {
                 id: 550055
             }
             const response = await posts.createPost(payload);
+            await expect(response!).toBeOK();
             expect(response.status()).toBe(201)
         })
     })
@@ -50,6 +51,7 @@ test.describe('Post CRUD tests', async () => {
     test('Should delete post successully - [DELETE] /posts/:id', { tag: [TestTags.POSTS] }, async ({ posts }) => {
         await test.step('should delete post with correct ID', async () => {
             const response = await posts.deletePost(1);
+            await expect(response!).toBeOK();
             expect(response.status()).toBe(200)
         })
     });
