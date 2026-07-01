@@ -1,6 +1,8 @@
 import { expect } from '@playwright/test';
 import { test } from '../../../ui/fixtures/page-object-fixture';
 import { TestTags } from '../../../ui/tags/test-tags';
+import { SauceDemoCredentials } from '../../../ui/consts/sauce-credentials.consts';
+import { LoginError } from '../../../ui/consts/login-error.consts';
 
 test.describe('Login Page Tests', () => {
     test.beforeEach(async ({ loginPage }) => {
@@ -18,7 +20,15 @@ test.describe('Login Page Tests', () => {
         });
     });
 
-    test('should fail when logging in with wrong credentials', async () => {
+    test('should fail when logging in with wrong credentials', {tag: [TestTags.LOGIN, TestTags.SANITY]} ,async ({loginPage}) => {
+        await test.step('login with wrong username and password', async() => {
+            await loginPage.loginToSauceDemo(SauceDemoCredentials.LOCKED_OUT_USERNAME, SauceDemoCredentials.RANDOM_PASSWORD);
+            await expect(loginPage.loginErrorMessages).toHaveText(LoginError.NO_MATCH_CREDENTIALS);
+        });
 
+        await test.step('login with locked out user and correct password', async() => {
+            await loginPage.loginToSauceDemo(SauceDemoCredentials.LOCKED_OUT_USERNAME, SauceDemoCredentials.STANDARD_PASSWORD);
+            await expect(loginPage.loginErrorMessages).toHaveText(LoginError.LOCKED_OUT_USER);
+        })
     })
 });

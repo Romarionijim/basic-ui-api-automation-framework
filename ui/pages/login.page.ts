@@ -5,6 +5,7 @@ export class LoginPage extends BasePage {
     userNameField = this.page.getByTestId('username');
     passwordField = this.page.getByTestId('password');
     loginButton = this.page.getByTestId('login-button');
+    loginErrorMessages = this.page.getByTestId('error');
 
     async loginToSauceDemo(
         userName: string = SauceDemoCredentials.STANDARD_USERNAME,

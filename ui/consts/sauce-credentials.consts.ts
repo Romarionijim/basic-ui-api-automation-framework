@@ -6,4 +6,5 @@ export enum SauceDemoCredentials {
     ERROR_USER = "error_user",
     VISUAL_USER = "visual_user",
     STANDARD_PASSWORD = "secret_sauce",
+    RANDOM_PASSWORD = "randompassword"
 }
