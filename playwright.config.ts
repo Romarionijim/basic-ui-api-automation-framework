@@ -18,7 +18,7 @@ export default defineConfig({
   use: {
     trace: 'on-first-retry',
     launchOptions: {
-      slowMo: 650,
+      slowMo: 600,
       headless: process.env.HEADLESS === 'false' ? false : true
     }
   },
