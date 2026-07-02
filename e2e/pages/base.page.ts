@@ -17,4 +17,9 @@ export class BasePage {
     async getCurrentPage() {
         return this.page;
     }
+
+    async getLocatorText(locator: Locator) {
+        const tagElement = await locator.evaluate((el) => el.tagName.toLowerCase() === 'input');
+        return tagElement ? (await locator.inputValue()).trim() : (await locator.innerText()).trim();
+    }
 }
