@@ -1,7 +1,7 @@
-import { test as setup } from '../../ui/fixtures/page-object-fixture';
+import { test as setup } from '../../e2e/fixtures/page-object-fixture';
 import { expect } from '@playwright/test';
 import path from 'path';
-import { SauceDemoCredentials } from '../../ui/consts/sauce-credentials.consts';
+import { SauceDemoCredentials } from '../../e2e/consts/sauce-credentials.consts';
 
 const authFile = path.join(__dirname, '../../playwright/.auth/user.json');
 

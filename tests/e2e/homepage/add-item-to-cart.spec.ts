@@ -1,6 +1,6 @@
-import { test } from '../../../ui/fixtures/page-object-fixture';
+import { test } from '../../../e2e/fixtures/page-object-fixture';
 import { expect } from '@playwright/test';
-import { TestTags } from '../../../ui/tags/test-tags';
+import { TestTags } from '../../../e2e/tags/test-tags';
 
 test.describe('Choose and add item to cart test', async () => {
 

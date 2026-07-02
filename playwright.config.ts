@@ -34,7 +34,7 @@ export default defineConfig({
     },
 
     {
-      name: 'ui',
+      name: 'e2e',
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.UI_HOME_BASE_URL,
@@ -43,7 +43,7 @@ export default defineConfig({
       },
       dependencies: ['setup'],
       workers: process.env.WORKERS ? Number(process.env.WORKERS): 1,
-      testDir: './tests/ui',
+      testDir: './tests/e2e',
     },
 
     {

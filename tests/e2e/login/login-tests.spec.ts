@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
-import { test } from '../../../ui/fixtures/page-object-fixture';
-import { TestTags } from '../../../ui/tags/test-tags';
-import { SauceDemoCredentials } from '../../../ui/consts/sauce-credentials.consts';
-import { LoginError } from '../../../ui/consts/login-error.consts';
+import { test } from '../../../e2e/fixtures/page-object-fixture';
+import { TestTags } from '../../../e2e/tags/test-tags';
+import { SauceDemoCredentials } from '../../../e2e/consts/sauce-credentials.consts';
+import { LoginError } from '../../../e2e/consts/login-error.consts';
 
 test.describe('Login Page Tests', () => {
     test.beforeEach(async ({ loginPage }) => {
