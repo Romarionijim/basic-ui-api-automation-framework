@@ -44,10 +44,3 @@ jobs:
         with:
           api_base_url: ${{ secrets.API_BASE_URL }}
           workers: ${{ env.WORKERS }}
-
-    # - name: Deploy Playwright report to Github Pages
-    #   uses: peaceiris/actions-gh-pages@v4
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_branch: gh-pages
-    #     publish_dir: ./playwright-report
