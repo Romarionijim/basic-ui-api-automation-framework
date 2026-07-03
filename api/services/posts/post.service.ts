@@ -2,7 +2,7 @@ import { APIRequestContext, APIResponse } from "@playwright/test";
 import { ApiClient } from "../../client/api-client";
 import { PostResourceOptions, Post } from "../../types/post-options.types";
 
-export class Posts {
+export class PostsService {
     apiClient: ApiClient;
 
     constructor(protected request: APIRequestContext) {
