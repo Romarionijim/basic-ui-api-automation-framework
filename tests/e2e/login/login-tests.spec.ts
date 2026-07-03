@@ -6,10 +6,9 @@ import { LoginError } from '../../../e2e/consts/login-error.consts';
 
 test.describe('Login Page Tests', () => {
     test.beforeEach(async ({ loginPage }) => {
-        loginPage.navigateTo('/');
+        await loginPage.navigateTo('/');
     });
 
-    // test.use({ storageState: { cookies: [], origins: [] } });
     test('should login with valid credentials successfully', { tag: [TestTags.LOGIN, TestTags.SANITY] }, async ({ loginPage }) => {
         await test.step('login with valid username and password', async () => {
             await loginPage.loginToSauceDemo();
@@ -21,33 +20,33 @@ test.describe('Login Page Tests', () => {
         });
     });
 
-    test('should fail when logging in with wrong credentials', {tag: [TestTags.LOGIN, TestTags.SANITY]} ,async ({loginPage}) => {
-        await test.step('login with wrong username and password', async() => {
+    test('should fail when logging in with wrong credentials', { tag: [TestTags.LOGIN, TestTags.SANITY] }, async ({ loginPage }) => {
+        await test.step('login with wrong username and password', async () => {
             await loginPage.loginToSauceDemo(SauceDemoCredentials.LOCKED_OUT_USERNAME, SauceDemoCredentials.RANDOM_PASSWORD);
             await expect(loginPage.loginErrorMessages).toHaveText(LoginError.NO_MATCH_CREDENTIALS);
         });
 
-        await test.step('login with locked out user and correct password', async() => {
+        await test.step('login with locked out user and correct password', async () => {
             await loginPage.loginToSauceDemo(SauceDemoCredentials.LOCKED_OUT_USERNAME, SauceDemoCredentials.STANDARD_PASSWORD);
             await expect(loginPage.loginErrorMessages).toHaveText(LoginError.LOCKED_OUT_USER);
         })
 
-        await test.step('login with correct username and wrong password', async() => {
+        await test.step('login with correct username and wrong password', async () => {
             await loginPage.loginToSauceDemo(SauceDemoCredentials.STANDARD_USERNAME, SauceDemoCredentials.RANDOM_PASSWORD);
             await expect(loginPage.loginErrorMessages).toHaveText(LoginError.NO_MATCH_CREDENTIALS);
         })
 
-        await test.step('login with empty username and password', async() => {
+        await test.step('login with empty username and password', async () => {
             await loginPage.loginToSauceDemo('', '');
             await expect(loginPage.loginErrorMessages).toHaveText(LoginError.USERNAME_REQUIRED);
         });
 
-        await test.step('login with empty username', async() => {
+        await test.step('login with empty username', async () => {
             await loginPage.loginToSauceDemo('', SauceDemoCredentials.STANDARD_PASSWORD);
             await expect(loginPage.loginErrorMessages).toHaveText(LoginError.USERNAME_REQUIRED);
         });
 
-        await test.step('login with empty password', async() => {
+        await test.step('login with empty password', async () => {
             await loginPage.loginToSauceDemo(SauceDemoCredentials.STANDARD_USERNAME, '');
             await expect(loginPage.loginErrorMessages).toHaveText(LoginError.PASSWORD_REQUIRED);
         });
