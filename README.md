@@ -1,4 +1,4 @@
-# SauceDemo Test Automation Framework
+# UI & API basic Test Automation Framework
 
 A Playwright-based test automation framework covering **UI end-to-end tests** against [SauceDemo](https://www.saucedemo.com/) and **API tests** against [JSONPlaceholder](https://jsonplaceholder.typicode.com/). Built with TypeScript using the Page Object Model pattern, custom Playwright fixtures, and a reusable API client along with server-based arch framework.
 
