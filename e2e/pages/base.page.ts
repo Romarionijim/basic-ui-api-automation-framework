@@ -14,7 +14,7 @@ export class BasePage {
         await locator.waitFor({ state: waitOption })
     }
 
-    async getCurrentPage() {
+    getCurrentPage() {
         return this.page;
     }
 

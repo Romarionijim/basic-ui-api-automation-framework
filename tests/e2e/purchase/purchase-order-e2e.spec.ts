@@ -20,7 +20,7 @@ test.describe('Purchase Order from start to finish end to end', async () => {
 
             await test.step('go to cart - assert details and continue to checkout', async () => {
                 await homePage.goToCart();
-                const cartCurrentPage = await cartPage.getCurrentPage();
+                const cartCurrentPage = cartPage.getCurrentPage();
                 await expect(cartCurrentPage).toHaveURL(/cart.html/);
                 await expect(cartPage.itemCartName).toHaveText(sauceLabBackpack);
                 await expect(cartPage.itemCartDetails).toHaveCount(1);
@@ -39,7 +39,7 @@ test.describe('Purchase Order from start to finish end to end', async () => {
             });
 
             await test.step('validate order was comopleted successfully', async () => {
-                const checkoutCompletion = await checkoutCompletionPage.getCurrentPage();
+                const checkoutCompletion = checkoutCompletionPage.getCurrentPage();
                 await expect(checkoutCompletion).toHaveURL(/checkout-complete.html/);
                 await expect(checkoutCompletionPage.orderCompletionText).toHaveText(thankYouForYourOrderText);
             });

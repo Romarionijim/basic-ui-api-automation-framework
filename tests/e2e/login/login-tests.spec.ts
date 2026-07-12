@@ -15,7 +15,7 @@ test.describe('Login Page Tests', () => {
         });
 
         await test.step('verify user is redirected to home page', async () => {
-            const currentPage = await loginPage.getCurrentPage();
+            const currentPage = loginPage.getCurrentPage();
             await expect(currentPage).toHaveURL(/inventory.html/);
         });
     });
