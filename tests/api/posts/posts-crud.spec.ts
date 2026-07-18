@@ -2,6 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../../../api/fixtures/api.fixture';
 import { Post } from '../../../api/types/post-options.types';
 import { TestTags } from '../../../api/tags/test-tags';
+import { mockGenerator } from '../../../api/mocks/mock-generator';
 
 test.describe('Post CRUD tests', async () => {
     test('should get list of posts - [GET] /posts', { tag: [TestTags.POSTS] }, async ({ posts }) => {
@@ -23,12 +24,7 @@ test.describe('Post CRUD tests', async () => {
 
     test('Should create post successfully - [POST] /posts', { tag: [TestTags.POSTS] }, async ({ posts }) => {
         await test.step('should create post with correct payload', async () => {
-            const payload = {
-                title: 'test title',
-                body: 'test body',
-                userId: 550,
-                id: 550055
-            }
+            const payload = mockGenerator.generatePost();
             const response = await posts.createPost(payload);
             await expect(response!).toBeOK();
             expect(response.status()).toBe(201)
