@@ -4,7 +4,7 @@ import { CheckoutOverviewPage } from "../pages/checkout-overview.page";
 import { CheckoutPage } from "../pages/checkout.page";
 import { HomePage } from "../pages/home.page";
 import { LoginPage } from "../pages/login.page";
-import { test as baseTest } from '@playwright/test';
+import { test as base } from '@playwright/test';
 
 export type PageObjects = {
     loginPage: LoginPage;
@@ -15,7 +15,7 @@ export type PageObjects = {
     checkoutCompletionPage: CheckOutCompletionPage;
 }
 
-export const test = baseTest.extend<PageObjects>({
+export const test = base.extend<PageObjects>({
     loginPage: async ({ page }, use) => {
         await use(new LoginPage(page));
     },
