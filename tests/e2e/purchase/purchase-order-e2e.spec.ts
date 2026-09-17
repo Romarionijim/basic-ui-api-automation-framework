@@ -2,6 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../../../e2e/fixtures/page-object-fixture';
 import { mockGenerator } from '../../../e2e/mocks/mock-generator';
 import { TestTags } from '../../../e2e/tags/test-tags';
+import { Routes } from '../../../e2e/consts/routes.consts';
 
 test.describe('Purchase Order from start to finish end to end', async () => {
     const checkoutDetails = mockGenerator.generateCheckoutDetails();
@@ -9,7 +10,7 @@ test.describe('Purchase Order from start to finish end to end', async () => {
     const thankYouForYourOrderText = 'Thank you for your order!';
 
     test.beforeEach(async ({ loginPage }) => {
-        await loginPage.navigateTo('/inventory.html');
+        await loginPage.navigateTo(Routes.INVENTORY);
     })
 
     test('Should purchase and ship items to address', { tag: [TestTags.PURCHASE, TestTags.SANITY] },

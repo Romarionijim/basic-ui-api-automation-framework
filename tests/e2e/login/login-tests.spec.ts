@@ -3,10 +3,11 @@ import { test } from '../../../e2e/fixtures/page-object-fixture';
 import { TestTags } from '../../../e2e/tags/test-tags';
 import { SauceDemoCredentials } from '../../../e2e/consts/sauce-credentials.consts';
 import { LoginError } from '../../../e2e/consts/login-error.consts';
+import { Routes } from '../../../e2e/consts/routes.consts';
 
 test.describe('Login Page Tests', () => {
     test.beforeEach(async ({ loginPage }) => {
-        await loginPage.navigateTo('/');
+        await loginPage.navigateTo(Routes.LOGIN);
     });
 
     test('should login with valid credentials successfully', { tag: [TestTags.LOGIN, TestTags.SANITY] }, async ({ loginPage }) => {
