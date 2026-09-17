@@ -14,6 +14,8 @@ export default defineConfig({
   reporter: [
     ['html', { outputFolder: 'playwright-report/', open: 'never' }],
     ['list'],
+    ['junit', { outputFile: 'playwright-report/results.xml' }],
+    ['json', { outputFile: 'playwright-report/results.json' }]
   ],
   use: {
     trace: 'on-first-retry',
